@@ -3,12 +3,16 @@ from equation_generator import generate_equation  # quiz logic (used later)
 import csv  # used to write quiz results to a CSV file
 from datetime import datetime  # used to record timestamps
 
-def log_user_start(name):
-    """Record the user's name and start time in a CSV file."""
+def log_quiz_result(name, start_time, score):
+    """Record the user's quiz result in a CSV file."""
     with open("results.csv", mode="a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow([name, datetime.now().isoformat()])
-
+        writer.writerow([
+            name,
+            start_time.isoformat(),
+            datetime.now().isoformat(),
+            score
+        ])
 
 class MathQuizApp(tk.Tk):
     """
@@ -18,7 +22,11 @@ class MathQuizApp(tk.Tk):
         super().__init__()
 
         self.title("Math Quiz")
-        self.user_name = None  
+        self.user_name = None
+        self.start_time = None
+        self.score = 0
+        self.current_question = 0
+        self.total_questions = 5
 
         self.build_name_screen()
 
@@ -34,6 +42,11 @@ class MathQuizApp(tk.Tk):
 
         self.feedback_label = tk.Label(self, text="", font=("Arial", 12))
         self.feedback_label.pack(pady=5)
+        
+    def clear_screen(self):
+        """Remove all widgets from the window."""
+        for widget in self.winfo_children():
+            widget.destroy()
 
     def start_quiz(self):
         name = self.name_entry.get().strip()
@@ -43,9 +56,15 @@ class MathQuizApp(tk.Tk):
             return
 
         self.user_name = name
-        log_user_start(self.user_name)
-        self.feedback_label.config(text=f"Welcome, {self.user_name}", fg="green")
+        self.start_time = datetime.now()  # store start time in memory
 
+        self.score = 0
+        self.current_question = 0
+
+        self.clear_screen()
+        # self.build_quiz_screen()
+        # self.load_question()
+        log_quiz_result(self.user_name, self.start_time, self.score)
 
 
 if __name__ == "__main__":
