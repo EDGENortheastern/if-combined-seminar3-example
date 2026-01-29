@@ -1,6 +1,6 @@
-# A Simple Tkinter Maths Quiz
+# Tkinter Maths Quiz
 
-This project is a small Tkinter application that asks users to solve some linear equations and keeps a record of their results.
+This project is a Tkinter application that asks users to solve some linear equations and keeps a record of their results.
 
 The steps the user should take are currently as follow (⚠️ under construction):
 
