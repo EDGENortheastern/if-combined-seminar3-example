@@ -1,0 +1,22 @@
+name: Python unit tests # workflow name shown in GitHub
+
+on:
+    push: # run on every push
+    pull_request: # run on pull requests
+
+jobs:
+    test:
+        runs-on: ubuntu-latest # required runner
+
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v4 # pulls repo code into runner
+
+            - name: Set up Python
+              uses: actions/setup-python@v5 # installs Python
+              with:
+                  python-version: "3.11" # Python version
+
+            - name: Run unit tests
+              run: |
+                  python -m unittest            # discovers and runs tests
