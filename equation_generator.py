@@ -13,5 +13,5 @@ def generate_equation(min_value=1, max_value=10):
     coefficient = random.randint(min_value, max_value)
     result = coefficient * solution
 
-    equation = f"{coefficient}x = {result}"
+    equation = f"{coefficient}𝑥 = {result}"
     return equation, solution

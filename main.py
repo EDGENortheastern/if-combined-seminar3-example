@@ -31,7 +31,7 @@ class MathQuizApp(tk.Tk):
         self.correct_colour = "#2E8B57"
         self.error_colour = "#C1121F"
         self.title("Math Quiz")
-        self.geometry("1000x750")
+        self.geometry("700x850")
         self.resizable(False, False)
         self.configure(bg=self.bg_colour)
 
@@ -72,7 +72,7 @@ class MathQuizApp(tk.Tk):
             text="You will be given five linear equations.\n"
                  "Enter your answer and press Submit or Return.\n"
                  "Your score will be recorded at the end.",
-            font=("Arial", 18),
+            font=("Arial", 20),
             justify="center",
             bg=self.bg_colour,
             fg=self.primary_colour
@@ -111,12 +111,6 @@ class MathQuizApp(tk.Tk):
             font=("Arial", 18, "bold"),
             width=16,
             height=2,
-            bd=0,
-            relief="flat",
-            bg=self.accent_colour,
-            fg="white",
-            activebackground=self.primary_colour,
-            activeforeground="white",
             command=self.start_quiz
         ).pack(pady=30)
 
